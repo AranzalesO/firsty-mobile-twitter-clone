@@ -1,20 +1,23 @@
-import 'package:firsty/common/rounded_small_button.dart';
+import 'package:firsty/common/common.dart';
 import 'package:firsty/constants/constants.dart';
-import 'package:firsty/features/auth/view/signup_view.dart';
-import 'package:firsty/features/auth/widgets/auth_field.dart';
-import 'package:firsty/theme/theme.dart';
+import 'package:firsty/features/auth/controller/auth_controller.dart';
+import 'package:firsty/features/auth/view/login_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoginView extends StatefulWidget {
-  static route() => MaterialPageRoute(builder: (context) => const LoginView());
-  const LoginView({super.key});
+import '../../../theme/pallete.dart';
+import '../widgets/auth_field.dart';
+
+class SignUpView extends ConsumerStatefulWidget {
+  static route() => MaterialPageRoute(builder: (context) => const SignUpView());
+  const SignUpView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  ConsumerState<SignUpView> createState() => _SignUpViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _SignUpViewState extends ConsumerState<SignUpView> {
   final appbar = UIConstants.appBar();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -24,6 +27,14 @@ class _LoginViewState extends State<LoginView> {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+  }
+
+  void onSignUp() {
+    ref.read(authControllerProvider.notifier).signUp(
+          email: emailController.text,
+          password: passwordController.text,
+          context: context,
+        );
   }
 
   @override
@@ -51,7 +62,7 @@ class _LoginViewState extends State<LoginView> {
               Align(
                 alignment: Alignment.topRight,
                 child: RoundedSmallButton(
-                  onTap: () {},
+                  onTap: onSignUp,
                   label: 'Done',
                 ),
               ),
@@ -59,14 +70,14 @@ class _LoginViewState extends State<LoginView> {
               // Textspan
               RichText(
                 text: TextSpan(
-                  text: "Don't have an account? ",
+                  text: "Already have an account? ",
                   style: const TextStyle(
                     fontSize: 16,
                     color: Pallete.greyColor,
                   ),
                   children: [
                     TextSpan(
-                      text: 'Sign up',
+                      text: 'Log In',
                       style: const TextStyle(
                         color: Pallete.blueColor,
                         fontSize: 16,
@@ -75,7 +86,7 @@ class _LoginViewState extends State<LoginView> {
                         ..onTap = () {
                           Navigator.push(
                             context,
-                            SignUpView.route(),
+                            LoginView.route(),
                           );
                         },
                     ),

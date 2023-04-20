@@ -1,6 +1,6 @@
 class AssetsConstants {
   static const String _svgsPath = 'assets/svgs';
-  static const String firstyLogo = '$_svgsPath/twitter_logo.svg';
+  static const String firstyLogo = '$_svgsPath/retweet.svg';
   static const String homeFilledIcon = '$_svgsPath/home_filled.svg';
   static const String homeOutlinedIcon = '$_svgsPath/home_outlined.svg';
   static const String notifFilledIcon = '$_svgsPath/notif_filled.svg';
@@ -10,7 +10,7 @@ class AssetsConstants {
   static const String emojiIcon = '$_svgsPath/emoji.svg';
   static const String galleryIcon = '$_svgsPath/gallery.svg';
   static const String commentIcon = '$_svgsPath/comment.svg';
-  static const String repostIcon = '$_svgsPath/retweet.svg';
+  static const String repostIcon = '$_svgsPath/repost.svg';
   static const String likeOutlinedIcon = '$_svgsPath/like_outlined.svg';
   static const String likeFilledIcon = '$_svgsPath/like_filled.svg';
   static const String viewsIcon = '$_svgsPath/views.svg';
