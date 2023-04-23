@@ -1,11 +1,13 @@
 import 'package:firsty/common/rounded_small_button.dart';
-import 'package:firsty/constants/ui_constants.dart';
+import 'package:firsty/constants/constants.dart';
+import 'package:firsty/features/auth/view/signup_view.dart';
 import 'package:firsty/features/auth/widgets/auth_field.dart';
 import 'package:firsty/theme/theme.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatefulWidget {
+  static route() => MaterialPageRoute(builder: (context) => const LoginView());
   const LoginView({super.key});
 
   @override
@@ -37,12 +39,14 @@ class _LoginViewState extends State<LoginView> {
               AuthField(
                 controller: emailController,
                 hintText: 'Email',
+                passwordType: false,
               ),
               const SizedBox(height: 25),
               // Textfield 2
               AuthField(
                 controller: passwordController,
                 hintText: 'Password',
+                passwordType: true,
               ),
               const SizedBox(height: 40),
               // Button
@@ -60,6 +64,7 @@ class _LoginViewState extends State<LoginView> {
                   text: "Don't have an account? ",
                   style: const TextStyle(
                     fontSize: 16,
+                    color: Pallete.greyColor,
                   ),
                   children: [
                     TextSpan(
@@ -68,7 +73,13 @@ class _LoginViewState extends State<LoginView> {
                         color: Pallete.blueColor,
                         fontSize: 16,
                       ),
-                      recognizer: TapGestureRecognizer()..onTap = () {},
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.push(
+                            context,
+                            SignUpView.route(),
+                          );
+                        },
                     ),
                   ],
                 ),
