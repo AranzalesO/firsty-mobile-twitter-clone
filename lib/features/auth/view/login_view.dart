@@ -39,12 +39,14 @@ class _LoginViewState extends State<LoginView> {
               AuthField(
                 controller: emailController,
                 hintText: 'Email',
+                passwordType: false,
               ),
               const SizedBox(height: 25),
               // Textfield 2
               AuthField(
                 controller: passwordController,
                 hintText: 'Password',
+                passwordType: true,
               ),
               const SizedBox(height: 40),
               // Button
