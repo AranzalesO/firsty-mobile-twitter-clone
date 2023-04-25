@@ -1,5 +1,4 @@
 import 'package:firsty/common/common.dart';
-import 'package:firsty/common/loading_page.dart';
 import 'package:firsty/constants/constants.dart';
 import 'package:firsty/features/auth/controller/auth_controller.dart';
 import 'package:firsty/features/auth/view/login_view.dart';
