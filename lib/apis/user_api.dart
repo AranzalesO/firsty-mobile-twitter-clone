@@ -1,4 +1,5 @@
 import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/models.dart' as model;
 import 'package:firsty/constants/constants.dart';
 import 'package:firsty/core/core.dart';
 import 'package:firsty/core/providers.dart';
@@ -15,8 +16,8 @@ final userAPIProvider = Provider((ref) {
 
 abstract class IUserAPI {
   FutureEitherVoid saveUserData(UserModel userModel);
-  // Future<model.Document> getUserData(String uid);
-  // Future<List<model.Document>> searchUserByName(String name);
+  Future<model.Document> getUserData(String uid);
+  Future<List<model.Document>> searchUserByName(String name);
   FutureEitherVoid updateUserData(UserModel userModel);
   Stream<RealtimeMessage> getLatestUserProfileData();
   FutureEitherVoid followUser(UserModel user);
@@ -55,26 +56,26 @@ class UserAPI implements IUserAPI {
   }
 
   @override
-  // Future<model.Document> getUserData(String uid) {
-  //   return _db.getDocument(
-  //     databaseId: AppwriteConstants.databaseId,
-  //     collectionId: AppwriteConstants.usersCollection,
-  //     documentId: uid,
-  //   );
-  // }
+  Future<model.Document> getUserData(String uid) {
+    return _db.getDocument(
+      databaseId: AppwriteConstants.databaseId,
+      collectionId: AppwriteConstants.usersCollection,
+      documentId: uid,
+    );
+  }
 
   @override
-  // Future<List<model.Document>> searchUserByName(String name) async {
-  //   final documents = await _db.listDocuments(
-  //     databaseId: AppwriteConstants.databaseId,
-  //     collectionId: AppwriteConstants.usersCollection,
-  //     queries: [
-  //       Query.search('name', name),
-  //     ],
-  //   );
+  Future<List<model.Document>> searchUserByName(String name) async {
+    final documents = await _db.listDocuments(
+      databaseId: AppwriteConstants.databaseId,
+      collectionId: AppwriteConstants.usersCollection,
+      queries: [
+        Query.search('name', name),
+      ],
+    );
 
-  //   return documents.documents;
-  // }
+    return documents.documents;
+  }
 
   @override
   FutureEitherVoid updateUserData(UserModel userModel) async {

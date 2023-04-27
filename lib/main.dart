@@ -1,7 +1,7 @@
 import 'package:firsty/common/error_page.dart';
 import 'package:firsty/common/loading_page.dart';
 import 'package:firsty/features/auth/controller/auth_controller.dart';
-import 'package:firsty/features/auth/home/view/home_view.dart';
+import 'package:firsty/features/home/view/home_view.dart';
 import 'package:firsty/features/auth/view/signup_view.dart';
 import 'package:firsty/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +18,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Firsty | Be the first to share to the world',
       theme: AppTheme.theme,
       home: ref.watch(currentUserAccountProvider).when(

@@ -1,10 +1,12 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:firsty/theme/pallete.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'assets_constants.dart';
+import 'package:firsty/constants/constants.dart';
+import 'package:firsty/features/explore/view/explore_view.dart';
+import 'package:firsty/features/notifications/views/notification_view.dart';
+import 'package:firsty/features/post/widgets/post_list.dart';
+import 'package:firsty/theme/pallete.dart';
 
 class UIConstants {
   static AppBar appBar() {
@@ -17,4 +19,10 @@ class UIConstants {
       centerTitle: true,
     );
   }
+
+  static const List<Widget> bottomTabBarPages = [
+    PostList(),
+    ExploreView(),
+    NotificationView(),
+  ];
 }
