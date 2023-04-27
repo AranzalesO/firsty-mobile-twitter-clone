@@ -2,7 +2,7 @@ import 'package:appwrite/models.dart' as model;
 import 'package:firsty/apis/auth_api.dart';
 import 'package:firsty/apis/user_api.dart';
 import 'package:firsty/core/utils.dart';
-import 'package:firsty/features/auth/home/view/home_view.dart';
+import 'package:firsty/features/home/view/home_view.dart';
 import 'package:firsty/features/auth/view/login_view.dart';
 import 'package:firsty/models/user_model.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +16,16 @@ final authControllerProvider =
   );
 });
 
-// final currentUserDetailsProvider = FutureProvider((ref) {
-//   final currentUserId = ref.watch(currentUserAccountProvider).value!.$id;
-//   final userDetails = ref.watch(userDetailsProvider(currentUserId));
-//   return userDetails.value;
-// });
+final currentUserDetailsProvider = FutureProvider((ref) {
+  final currentUserId = ref.watch(currentUserAccountProvider).value!.$id;
+  final userDetails = ref.watch(userDetailsProvider(currentUserId));
+  return userDetails.value;
+});
 
-// final userDetailsProvider = FutureProvider.family((ref, String uid) {
-//   final authController = ref.watch(authControllerProvider.notifier);
-//   return authController.getUserData(uid);
-// });
+final userDetailsProvider = FutureProvider.family((ref, String uid) {
+  final authController = ref.watch(authControllerProvider.notifier);
+  return authController.getUserData(uid);
+});
 
 final currentUserAccountProvider = FutureProvider((ref) {
   final authController = ref.watch(authControllerProvider.notifier);
@@ -96,9 +96,9 @@ class AuthController extends StateNotifier<bool> {
     );
   }
 
-  // Future<UserModel> getUserData(String uid) async {
-  //   final document = await _userAPI.getUserData(uid);
-  //   final updatedUser = UserModel.fromMap(document.data);
-  //   return updatedUser;
-  // }
+  Future<UserModel> getUserData(String uid) async {
+    final document = await _userAPI.getUserData(uid);
+    final updatedUser = UserModel.fromMap(document.data);
+    return updatedUser;
+  }
 }

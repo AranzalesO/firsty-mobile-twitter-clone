@@ -1,4 +1,5 @@
 import 'package:firsty/constants/constants.dart';
+import 'package:firsty/features/post/views/create_post_view.dart';
 import 'package:firsty/theme/pallete.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,20 +25,21 @@ class _HomeViewState extends State<HomeView> {
     });
   }
 
-  // onCreateTweet() {
-  //   Navigator.push(context, CreateTweetScreen.route());
-  // }
+  onCreatePost() {
+    Navigator.push(context, CreatePostScreen.route());
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _page == 0 ? appBar : null,
+      // appBar: _page == 0 ? appBar : null,
+      appBar: appBar,
       body: IndexedStack(
         index: _page,
-        // children: UIConstants.bottomTabBarPages,
+        children: UIConstants.bottomTabBarPages,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: onCreatePost,
         child: const Icon(
           Icons.add,
           color: Pallete.whiteColor,
