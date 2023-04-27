@@ -3,6 +3,7 @@ import 'package:firsty/common/loading_page.dart';
 import 'package:firsty/features/auth/controller/auth_controller.dart';
 import 'package:firsty/features/auth/home/view/home_view.dart';
 import 'package:firsty/features/auth/view/signup_view.dart';
+import 'package:firsty/pages/home.dart';
 import 'package:firsty/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,7 +24,7 @@ class MyApp extends ConsumerWidget {
       home: ref.watch(currentUserAccountProvider).when(
           data: (user) {
             if (user != null) {
-              return const HomeView();
+              return Home();
             }
             return const SignUpView();
           },
