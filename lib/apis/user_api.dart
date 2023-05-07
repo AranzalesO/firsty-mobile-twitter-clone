@@ -1,11 +1,11 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart' as model;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:firsty/constants/constants.dart';
 import 'package:firsty/core/core.dart';
 import 'package:firsty/core/providers.dart';
 import 'package:firsty/models/user_model.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fpdart/fpdart.dart';
 
 final userAPIProvider = Provider((ref) {
   return UserAPI(

@@ -1,9 +1,8 @@
 import 'dart:io';
 import 'package:appwrite/appwrite.dart';
-import 'package:firsty/core/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../constants/constants.dart';
+import 'package:firsty/constants/constants.dart';
+import 'package:firsty/core/providers.dart';
 
 final storageAPIProvider = Provider((ref) {
   return StorageAPI(
@@ -21,7 +20,7 @@ class StorageAPI {
       final uploadedImage = await _storage.createFile(
         bucketId: AppwriteConstants.imagesBucket,
         fileId: ID.unique(),
-        file: InputFile.fromPath(path: file.path),
+        file: InputFile(path: file.path),
       );
       imageLinks.add(
         AppwriteConstants.imageUrl(uploadedImage.$id),

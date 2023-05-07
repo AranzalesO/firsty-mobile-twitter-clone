@@ -1,5 +1,6 @@
-import 'package:firsty/core/enums/post_type_enum.dart';
 import 'package:flutter/foundation.dart';
+
+import 'package:firsty/core/enums/post_type_enum.dart';
 
 @immutable
 class Post {
