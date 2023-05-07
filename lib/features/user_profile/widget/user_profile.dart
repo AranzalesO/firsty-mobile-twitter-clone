@@ -153,6 +153,8 @@ class UserProfile extends ConsumerWidget {
             },
             body: ref.watch(getUserPostsProvider(user.uid)).when(
                   data: (posts) {
+                    // can make it realtime by copying code
+                    // from firsty_reply_view
                     return ListView.builder(
                       itemCount: posts.length,
                       itemBuilder: (BuildContext context, int index) {

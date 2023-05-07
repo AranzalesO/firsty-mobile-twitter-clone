@@ -1,9 +1,10 @@
-import 'package:firsty/constants/constants.dart';
-import 'package:firsty/features/post/views/create_post_view.dart';
-import 'package:firsty/theme/pallete.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:firsty/constants/constants.dart';
+import 'package:firsty/features/home/widgets/side_drawer.dart';
+import 'package:firsty/features/post/views/create_post_view.dart';
+import 'package:firsty/theme/pallete.dart';
 
 class HomeView extends StatefulWidget {
   static route() => MaterialPageRoute(
@@ -32,8 +33,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: _page == 0 ? appBar : null,
-      appBar: appBar,
+      appBar: _page == 0 ? appBar : null,
       body: IndexedStack(
         index: _page,
         children: UIConstants.bottomTabBarPages,
@@ -46,7 +46,7 @@ class _HomeViewState extends State<HomeView> {
           size: 28,
         ),
       ),
-      // drawer: const SideDrawer(),
+      drawer: const SideDrawer(),
       bottomNavigationBar: CupertinoTabBar(
         currentIndex: _page,
         onTap: onPageChange,

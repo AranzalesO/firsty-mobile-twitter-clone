@@ -1,12 +1,13 @@
 import 'package:appwrite/models.dart' as model;
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firsty/apis/auth_api.dart';
 import 'package:firsty/apis/user_api.dart';
 import 'package:firsty/core/utils.dart';
-import 'package:firsty/features/home/view/home_view.dart';
 import 'package:firsty/features/auth/view/login_view.dart';
+import 'package:firsty/features/auth/view/signup_view.dart';
+import 'package:firsty/features/home/view/home_view.dart';
 import 'package:firsty/models/user_model.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final authControllerProvider =
     StateNotifierProvider<AuthController, bool>((ref) {
@@ -35,8 +36,10 @@ final currentUserAccountProvider = FutureProvider((ref) {
 class AuthController extends StateNotifier<bool> {
   final AuthAPI _authAPI;
   final UserAPI _userAPI;
-  AuthController({required AuthAPI authAPI, required UserAPI userAPI})
-      : _authAPI = authAPI,
+  AuthController({
+    required AuthAPI authAPI,
+    required UserAPI userAPI,
+  })  : _authAPI = authAPI,
         _userAPI = userAPI,
         super(false);
   // state = isLoading
@@ -70,7 +73,7 @@ class AuthController extends StateNotifier<bool> {
         );
         final res2 = await _userAPI.saveUserData(userModel);
         res2.fold((l) => showSnackBar(context, l.message), (r) {
-          showSnackBar(context, 'Your account has been created! Please login.');
+          showSnackBar(context, 'Accounted created! Please login.');
           Navigator.push(context, LoginView.route());
         });
       },
@@ -100,5 +103,16 @@ class AuthController extends StateNotifier<bool> {
     final document = await _userAPI.getUserData(uid);
     final updatedUser = UserModel.fromMap(document.data);
     return updatedUser;
+  }
+
+  void logout(BuildContext context) async {
+    final res = await _authAPI.logout();
+    res.fold((l) => null, (r) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        SignUpView.route(),
+        (route) => false,
+      );
+    });
   }
 }
