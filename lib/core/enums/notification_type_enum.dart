@@ -8,7 +8,7 @@ enum NotificationType {
   const NotificationType(this.type);
 }
 
-extension ConvertTweet on String {
+extension ConvertPost on String {
   NotificationType toNotificationTypeEnum() {
     switch (this) {
       case 'repost':

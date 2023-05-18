@@ -1,9 +1,8 @@
 import 'dart:io';
 import 'package:appwrite/appwrite.dart';
-import 'package:firsty/core/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../constants/constants.dart';
+import 'package:firsty/constants/constants.dart';
+import 'package:firsty/core/providers.dart';
 
 final storageAPIProvider = Provider((ref) {
   return StorageAPI(
