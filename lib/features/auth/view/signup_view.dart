@@ -46,59 +46,57 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
           ? const Loader()
           : Center(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
-                child: Column(
-                  children: [
-                    // Textfield 1
-                    AuthField(
-                      controller: emailController,
-                      hintText: 'Email',
-                      passwordType: false,
-                    ),
-                    const SizedBox(height: 25),
-                    // Textfield 2
-                    AuthField(
-                      controller: passwordController,
-                      hintText: 'Password',
-                      passwordType: true,
-                    ),
-                    const SizedBox(height: 40),
-                    // Button
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: RoundedSmallButton(
-                        onTap: onSignUp,
-                        label: 'Done',
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    children: [
+                      // textfield 1
+                      AuthField(
+                        controller: emailController,
+                        hintText: 'Email',
+                        obscureText: false,
                       ),
-                    ),
-                    const SizedBox(height: 40),
-                    // Textspan
-                    RichText(
-                      text: TextSpan(
-                        text: "Already have an account? ",
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Pallete.greyColor,
+                      const SizedBox(height: 25),
+                      AuthField(
+                        controller: passwordController,
+                        hintText: 'Password',
+                        obscureText: true,
+                      ),
+                      const SizedBox(height: 40),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: RoundedSmallButton(
+                          onTap: onSignUp,
+                          label: 'Done',
                         ),
-                        children: [
-                          TextSpan(
-                            text: 'Log In',
-                            style: const TextStyle(
-                              color: Pallete.blueColor,
-                              fontSize: 16,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                Navigator.push(
-                                  context,
-                                  LoginView.route(),
-                                );
-                              },
-                          ),
-                        ],
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 40),
+                      RichText(
+                        text: TextSpan(
+                          text: "Already have an account?",
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: ' Login',
+                              style: const TextStyle(
+                                color: Pallete.blueColor,
+                                fontSize: 16,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.push(
+                                    context,
+                                    LoginView.route(),
+                                  );
+                                },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
