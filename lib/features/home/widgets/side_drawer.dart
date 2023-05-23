@@ -43,11 +43,11 @@ class SideDrawer extends ConsumerWidget {
             ),
             ListTile(
               leading: const Icon(
-                Icons.payment,
+                Icons.document_scanner_outlined,
                 size: 30,
               ),
               title: const Text(
-                'Enhance profile',
+                'Verify profile',
                 style: TextStyle(
                   fontSize: 22,
                 ),

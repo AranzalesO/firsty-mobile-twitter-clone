@@ -5,6 +5,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:firsty/core/core.dart';
 import 'package:firsty/core/providers.dart';
 
+// Defined by Riverpod  -> account (appwriteAccountProvider)
 final authAPIProvider = Provider((ref) {
   final account = ref.watch(appwriteAccountProvider);
   return AuthAPI(account: account);

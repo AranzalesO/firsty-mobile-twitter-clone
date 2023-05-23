@@ -50,7 +50,7 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
               filled: true,
               enabledBorder: appBarTextFieldBorder,
               focusedBorder: appBarTextFieldBorder,
-              hintText: 'Search',
+              hintText: 'Search User',
             ),
           ),
         ),

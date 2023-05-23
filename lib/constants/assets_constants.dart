@@ -1,6 +1,6 @@
 class AssetsConstants {
   static const String _svgsPath = 'assets/svgs';
-  static const String firstyLogo = '$_svgsPath/firsty.svg';
+  static const String firstyLogo = '$_svgsPath/emoji.svg';
   static const String homeFilledIcon = '$_svgsPath/home_filled.svg';
   static const String homeOutlinedIcon = '$_svgsPath/home_outlined.svg';
   static const String notifFilledIcon = '$_svgsPath/notif_filled.svg';
