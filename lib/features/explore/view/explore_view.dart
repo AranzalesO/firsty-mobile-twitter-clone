@@ -16,7 +16,6 @@ class ExploreView extends ConsumerStatefulWidget {
 class _ExploreViewState extends ConsumerState<ExploreView> {
   final searchController = TextEditingController();
   bool isShowUsers = false;
-
   @override
   void dispose() {
     super.dispose();
